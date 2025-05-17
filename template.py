@@ -12,8 +12,15 @@ if False:
     os.environ['CURL_CA_BUNDLE'] = ''
     os.environ['REQUESTS_CA_BUNDLE'] = ''
 
+# Exit Conditions
 def exit_conditions():
+    # If the right key(s) has been pressed
     return keyboard.is_pressed('esc') or keyboard.is_pressed('q')
+
+# Record Conditions
+def record_conditions():
+    # If the right key(s) has been pressed
+    return keyboard.is_pressed('space')
 
 # Initialize TTS
 tts = pyttsx3.init()
@@ -44,8 +51,8 @@ print('Setup complete!')
 # Setup conditions to kill the program
 while not exit_conditions():
 
-    # Audio recording done with space
-    if keyboard.is_pressed('space'):
+    # If the conditions have been met to record audio...
+    if record_conditions():
 
         # Get audio from microphone
         with sr.Microphone() as source:
